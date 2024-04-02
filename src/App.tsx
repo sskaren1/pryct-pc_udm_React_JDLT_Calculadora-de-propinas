@@ -1,10 +1,11 @@
 import MenuItem from "./components/MenuItem";
+import OrderContents from "./components/OrderContents";
 import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 
 function App() {
   console.log(menuItems);
-  const { addItem } = useOrder();
+  const { order, addItem } = useOrder();
 
   return (
     <>
@@ -26,7 +27,13 @@ function App() {
         </div>
 
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          <h2 className="text-4xl font-black">Consumo</h2>
+          {order.length ? (
+            <>
+              <OrderContents order={order} />
+            </>
+          ) : (
+            <p className="text-center">La orden esta vacia</p>
+          )}
         </div>
       </main>
     </>
