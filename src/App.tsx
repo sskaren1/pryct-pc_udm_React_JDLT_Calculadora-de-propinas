@@ -5,7 +5,7 @@ import useOrder from "./hooks/useOrder";
 
 function App() {
   console.log(menuItems);
-  const { order, addItem } = useOrder();
+  const { order, addItem, removeItem } = useOrder();
 
   return (
     <>
@@ -29,7 +29,7 @@ function App() {
         <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
           {order.length ? (
             <>
-              <OrderContents order={order} />
+              <OrderContents order={order} removeItem={removeItem} />
             </>
           ) : (
             <p className="text-center">La orden esta vacia</p>
