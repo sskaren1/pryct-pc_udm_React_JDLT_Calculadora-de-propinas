@@ -1,6 +1,7 @@
 import MenuItem from "./components/MenuItem";
 import OrderContents from "./components/OrderContents";
 import OrderTotals from "./components/OrderTotals";
+import TipPercentageForm from "./components/TipPercentageForm";
 import { menuItems } from "./data/db";
 import useOrder from "./hooks/useOrder";
 
@@ -8,8 +9,8 @@ function App() {
   console.log(menuItems);
   const { 
     order,
-    // tip,
-    // setTip,
+    tip,
+    setTip,
     addItem,
     removeItem,
     // placeOrder 
@@ -38,7 +39,8 @@ function App() {
           {order.length ? (
             <>
               <OrderContents order={order} removeItem={removeItem} />
-              <OrderTotals order={order} />
+              <TipPercentageForm setTip={setTip}/>
+              <OrderTotals order={order} tip={tip}/>
             </>
           ) : (
             <p className="text-center">La orden esta vacia</p>

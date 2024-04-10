@@ -4,20 +4,20 @@ import { formatCurrency } from "../helpers";
 
 type OrderTotalsProps = {
   order: OrderItem[];
-//   tip: number;
+  tip: number;
 //   placeOrder: () => void;
 };
 
 export default function OrderTotals({
   order,
-//   tip,
+  tip,
 //   placeOrder,
 }: OrderTotalsProps) {
   const subtotalAmount = useCallback(
     () => order.reduce((total, item) => total + item.quantity * item.price, 0),
     [order]
   );
-//   const tipAmount = useCallback(() => subtotalAmount() * tip, [tip, order]);
+  const tipAmount = useCallback(() => subtotalAmount() * tip, [tip, order]);
 //   const totalAmount = useCallback(
 //     () => subtotalAmount() + tipAmount(),
 //     [tip, order]
@@ -31,11 +31,11 @@ export default function OrderTotals({
           Subtotal a pagar: {""}
           <span className="font-bold">{formatCurrency(subtotalAmount())}</span>
         </p>
-        {/* <p>
+        <p>
           Propina: {""}
           <span className="font-bold">{formatCurrency(tipAmount())}</span>
         </p>
-        <p>
+        {/* <p>
           Total a Pagar: {""}
           <span className="font-bold">{formatCurrency(totalAmount())}</span>
         </p> */}
