@@ -13,7 +13,7 @@ function App() {
     setTip,
     addItem,
     removeItem,
-    // placeOrder 
+    placeOrder 
   } = useOrder();
 
   return (
@@ -39,8 +39,8 @@ function App() {
           {order.length ? (
             <>
               <OrderContents order={order} removeItem={removeItem} />
-              <TipPercentageForm setTip={setTip}/>
-              <OrderTotals order={order} tip={tip}/>
+              <TipPercentageForm setTip={setTip} tip={tip}/>
+              <OrderTotals order={order} tip={tip} placeOrder={placeOrder}/>
             </>
           ) : (
             <p className="text-center">La orden esta vacia</p>
